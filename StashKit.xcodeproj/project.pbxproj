@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		7A26918B18DCC1C6006A63B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26918A18DCC1C6006A63B8 /* Cocoa.framework */; };
-		7A26919518DCC1C6006A63B8 /* StashKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A26919418DCC1C6006A63B8 /* StashKit.m */; };
 		7A26919C18DCC1C6006A63B8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26919B18DCC1C6006A63B8 /* XCTest.framework */; };
 		7A26919D18DCC1C6006A63B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26918A18DCC1C6006A63B8 /* Cocoa.framework */; };
 		7A2691A018DCC1C6006A63B8 /* libStashKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26918718DCC1C6006A63B8 /* libStashKit.a */; };
 		7A2691A618DCC1C6006A63B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A2691A418DCC1C6006A63B8 /* InfoPlist.strings */; };
 		7A2691A818DCC1C6006A63B8 /* StashKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2691A718DCC1C6006A63B8 /* StashKitTests.m */; };
+		7A2691B318DCC20B006A63B8 /* STKUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A2691B118DCC20B006A63B8 /* STKUser.h */; };
+		7A2691B418DCC20B006A63B8 /* STKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2691B218DCC20B006A63B8 /* STKUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,13 +34,13 @@
 		7A26918E18DCC1C6006A63B8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7A26918F18DCC1C6006A63B8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		7A26919218DCC1C6006A63B8 /* StashKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StashKit-Prefix.pch"; sourceTree = "<group>"; };
-		7A26919318DCC1C6006A63B8 /* StashKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StashKit.h; sourceTree = "<group>"; };
-		7A26919418DCC1C6006A63B8 /* StashKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StashKit.m; sourceTree = "<group>"; };
 		7A26919A18DCC1C6006A63B8 /* StashKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StashKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A26919B18DCC1C6006A63B8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		7A2691A318DCC1C6006A63B8 /* StashKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StashKitTests-Info.plist"; sourceTree = "<group>"; };
 		7A2691A518DCC1C6006A63B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7A2691A718DCC1C6006A63B8 /* StashKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StashKitTests.m; sourceTree = "<group>"; };
+		7A2691B118DCC20B006A63B8 /* STKUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKUser.h; sourceTree = "<group>"; };
+		7A2691B218DCC20B006A63B8 /* STKUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,9 +107,9 @@
 		7A26919018DCC1C6006A63B8 /* StashKit */ = {
 			isa = PBXGroup;
 			children = (
-				7A26919318DCC1C6006A63B8 /* StashKit.h */,
-				7A26919418DCC1C6006A63B8 /* StashKit.m */,
 				7A26919118DCC1C6006A63B8 /* Supporting Files */,
+				7A2691B118DCC20B006A63B8 /* STKUser.h */,
+				7A2691B218DCC20B006A63B8 /* STKUser.m */,
 			);
 			path = StashKit;
 			sourceTree = "<group>";
@@ -146,6 +147,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A2691B318DCC20B006A63B8 /* STKUser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A26919518DCC1C6006A63B8 /* StashKit.m in Sources */,
+				7A2691B418DCC20B006A63B8 /* STKUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
