@@ -1,0 +1,422 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7A26918B18DCC1C6006A63B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26918A18DCC1C6006A63B8 /* Cocoa.framework */; };
+		7A26919518DCC1C6006A63B8 /* StashKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A26919418DCC1C6006A63B8 /* StashKit.m */; };
+		7A26919C18DCC1C6006A63B8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26919B18DCC1C6006A63B8 /* XCTest.framework */; };
+		7A26919D18DCC1C6006A63B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26918A18DCC1C6006A63B8 /* Cocoa.framework */; };
+		7A2691A018DCC1C6006A63B8 /* libStashKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26918718DCC1C6006A63B8 /* libStashKit.a */; };
+		7A2691A618DCC1C6006A63B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A2691A418DCC1C6006A63B8 /* InfoPlist.strings */; };
+		7A2691A818DCC1C6006A63B8 /* StashKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2691A718DCC1C6006A63B8 /* StashKitTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A26919E18DCC1C6006A63B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A26917F18DCC1C6006A63B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A26918618DCC1C6006A63B8;
+			remoteInfo = StashKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7A26918718DCC1C6006A63B8 /* libStashKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libStashKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A26918A18DCC1C6006A63B8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		7A26918D18DCC1C6006A63B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7A26918E18DCC1C6006A63B8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		7A26918F18DCC1C6006A63B8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		7A26919218DCC1C6006A63B8 /* StashKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StashKit-Prefix.pch"; sourceTree = "<group>"; };
+		7A26919318DCC1C6006A63B8 /* StashKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StashKit.h; sourceTree = "<group>"; };
+		7A26919418DCC1C6006A63B8 /* StashKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StashKit.m; sourceTree = "<group>"; };
+		7A26919A18DCC1C6006A63B8 /* StashKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StashKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A26919B18DCC1C6006A63B8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		7A2691A318DCC1C6006A63B8 /* StashKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StashKitTests-Info.plist"; sourceTree = "<group>"; };
+		7A2691A518DCC1C6006A63B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7A2691A718DCC1C6006A63B8 /* StashKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StashKitTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A26918418DCC1C6006A63B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A26918B18DCC1C6006A63B8 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A26919718DCC1C6006A63B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A26919D18DCC1C6006A63B8 /* Cocoa.framework in Frameworks */,
+				7A2691A018DCC1C6006A63B8 /* libStashKit.a in Frameworks */,
+				7A26919C18DCC1C6006A63B8 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7A26917E18DCC1C6006A63B8 = {
+			isa = PBXGroup;
+			children = (
+				7A26919018DCC1C6006A63B8 /* StashKit */,
+				7A2691A118DCC1C6006A63B8 /* StashKitTests */,
+				7A26918918DCC1C6006A63B8 /* Frameworks */,
+				7A26918818DCC1C6006A63B8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7A26918818DCC1C6006A63B8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A26918718DCC1C6006A63B8 /* libStashKit.a */,
+				7A26919A18DCC1C6006A63B8 /* StashKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A26918918DCC1C6006A63B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A26918A18DCC1C6006A63B8 /* Cocoa.framework */,
+				7A26919B18DCC1C6006A63B8 /* XCTest.framework */,
+				7A26918C18DCC1C6006A63B8 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A26918C18DCC1C6006A63B8 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A26918D18DCC1C6006A63B8 /* Foundation.framework */,
+				7A26918E18DCC1C6006A63B8 /* CoreData.framework */,
+				7A26918F18DCC1C6006A63B8 /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		7A26919018DCC1C6006A63B8 /* StashKit */ = {
+			isa = PBXGroup;
+			children = (
+				7A26919318DCC1C6006A63B8 /* StashKit.h */,
+				7A26919418DCC1C6006A63B8 /* StashKit.m */,
+				7A26919118DCC1C6006A63B8 /* Supporting Files */,
+			);
+			path = StashKit;
+			sourceTree = "<group>";
+		};
+		7A26919118DCC1C6006A63B8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A26919218DCC1C6006A63B8 /* StashKit-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7A2691A118DCC1C6006A63B8 /* StashKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				7A2691A718DCC1C6006A63B8 /* StashKitTests.m */,
+				7A2691A218DCC1C6006A63B8 /* Supporting Files */,
+			);
+			path = StashKitTests;
+			sourceTree = "<group>";
+		};
+		7A2691A218DCC1C6006A63B8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A2691A318DCC1C6006A63B8 /* StashKitTests-Info.plist */,
+				7A2691A418DCC1C6006A63B8 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7A26918518DCC1C6006A63B8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7A26918618DCC1C6006A63B8 /* StashKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A2691AB18DCC1C6006A63B8 /* Build configuration list for PBXNativeTarget "StashKit" */;
+			buildPhases = (
+				7A26918318DCC1C6006A63B8 /* Sources */,
+				7A26918418DCC1C6006A63B8 /* Frameworks */,
+				7A26918518DCC1C6006A63B8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StashKit;
+			productName = StashKit;
+			productReference = 7A26918718DCC1C6006A63B8 /* libStashKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		7A26919918DCC1C6006A63B8 /* StashKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A2691AE18DCC1C6006A63B8 /* Build configuration list for PBXNativeTarget "StashKitTests" */;
+			buildPhases = (
+				7A26919618DCC1C6006A63B8 /* Sources */,
+				7A26919718DCC1C6006A63B8 /* Frameworks */,
+				7A26919818DCC1C6006A63B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A26919F18DCC1C6006A63B8 /* PBXTargetDependency */,
+			);
+			name = StashKitTests;
+			productName = StashKitTests;
+			productReference = 7A26919A18DCC1C6006A63B8 /* StashKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A26917F18DCC1C6006A63B8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Perfectly-Cooked";
+			};
+			buildConfigurationList = 7A26918218DCC1C6006A63B8 /* Build configuration list for PBXProject "StashKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7A26917E18DCC1C6006A63B8;
+			productRefGroup = 7A26918818DCC1C6006A63B8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A26918618DCC1C6006A63B8 /* StashKit */,
+				7A26919918DCC1C6006A63B8 /* StashKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A26919818DCC1C6006A63B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A2691A618DCC1C6006A63B8 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A26918318DCC1C6006A63B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A26919518DCC1C6006A63B8 /* StashKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A26919618DCC1C6006A63B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A2691A818DCC1C6006A63B8 /* StashKitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A26919F18DCC1C6006A63B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A26918618DCC1C6006A63B8 /* StashKit */;
+			targetProxy = 7A26919E18DCC1C6006A63B8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7A2691A418DCC1C6006A63B8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A2691A518DCC1C6006A63B8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7A2691A918DCC1C6006A63B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		7A2691AA18DCC1C6006A63B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7A2691AC18DCC1C6006A63B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StashKit/StashKit-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7A2691AD18DCC1C6006A63B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StashKit/StashKit-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7A2691AF18DCC1C6006A63B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StashKit/StashKit-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "StashKitTests/StashKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		7A2691B018DCC1C6006A63B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StashKit/StashKit-Prefix.pch";
+				INFOPLIST_FILE = "StashKitTests/StashKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A26918218DCC1C6006A63B8 /* Build configuration list for PBXProject "StashKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A2691A918DCC1C6006A63B8 /* Debug */,
+				7A2691AA18DCC1C6006A63B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A2691AB18DCC1C6006A63B8 /* Build configuration list for PBXNativeTarget "StashKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A2691AC18DCC1C6006A63B8 /* Debug */,
+				7A2691AD18DCC1C6006A63B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7A2691AE18DCC1C6006A63B8 /* Build configuration list for PBXNativeTarget "StashKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A2691AF18DCC1C6006A63B8 /* Debug */,
+				7A2691B018DCC1C6006A63B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A26917F18DCC1C6006A63B8 /* Project object */;
+}
