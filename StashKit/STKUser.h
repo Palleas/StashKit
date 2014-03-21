@@ -12,8 +12,9 @@
 
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *password;
-@property (nonatomic, strong) NSURL *endpoint;
+@property (nonatomic, strong) NSURL *baseUrl;
 
-- (instancetype)initWithUsername:(NSString *)name password:(NSString *)password endpoint:(NSURL *)url;
+- (instancetype)initWithUsername:(NSString *)name password:(NSString *)password baseUrl:(NSURL *)url;
+- (NSString *)HTTPBasicAuthorizationHeaderValue;
 
 @end

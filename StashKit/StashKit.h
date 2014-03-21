@@ -6,9 +6,5 @@
 //  Copyright (c) 2014 Perfectly-Cooked. All rights reserved.
 //
 
-#ifndef StashKit_StashKit_h
-#define StashKit_StashKit_h
-
-
-
-#endif
+#import "STKUser.h"
+#import "STKClient.h"

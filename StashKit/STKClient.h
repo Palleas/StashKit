@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class RACSignal;
+@class STKUser;
+
 @interface STKClient : NSObject
+
+- (instancetype)initWithUser:(STKUser *)user;
+
+- (RACSignal *)fetchProjects;
 
 @end

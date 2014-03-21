@@ -10,15 +10,21 @@
 
 @implementation STKUser
 
-- (instancetype)initWithUsername:(NSString *)username password:(NSString *)password endpoint:(NSURL *)endpoint {
+- (instancetype)initWithUsername:(NSString *)username password:(NSString *)password baseUrl:(NSURL *)baseUrl {
     self = [super init];
     if (self) {
         self.username = username;
         self.password = password;
-        self.endpoint = endpoint;
+        self.baseUrl = baseUrl;
     }
     
     return self;
 }
 
+- (NSString *)HTTPBasicAuthorizationHeaderValue {
+    NSData *credentials = [[[NSString stringWithFormat: @"%@:%@", self.username, self.password] dataUsingEncoding: NSUTF8StringEncoding] base64EncodedDataWithOptions: 0];
+    
+    return [NSString stringWithFormat: @"Basic %@", [[NSString alloc] initWithData: credentials encoding: NSUTF8StringEncoding]];
+}
+            
 @end
