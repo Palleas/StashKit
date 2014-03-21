@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10F98E90852847369AF4D937 /* libPods-StashKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1C3A4B72C04FCCA67C378D /* libPods-StashKit.a */; };
 		7A26918B18DCC1C6006A63B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26918A18DCC1C6006A63B8 /* Cocoa.framework */; };
 		7A26919C18DCC1C6006A63B8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26919B18DCC1C6006A63B8 /* XCTest.framework */; };
 		7A26919D18DCC1C6006A63B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26918A18DCC1C6006A63B8 /* Cocoa.framework */; };
@@ -15,6 +16,8 @@
 		7A2691A818DCC1C6006A63B8 /* StashKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2691A718DCC1C6006A63B8 /* StashKitTests.m */; };
 		7A2691B318DCC20B006A63B8 /* STKUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A2691B118DCC20B006A63B8 /* STKUser.h */; };
 		7A2691B418DCC20B006A63B8 /* STKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2691B218DCC20B006A63B8 /* STKUser.m */; };
+		7A2691CA18DCD37B006A63B8 /* STKClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A2691C818DCD37B006A63B8 /* STKClient.h */; };
+		7A2691CB18DCD37B006A63B8 /* STKClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2691C918DCD37B006A63B8 /* STKClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B1C3A4B72C04FCCA67C378D /* libPods-StashKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StashKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A26918718DCC1C6006A63B8 /* libStashKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libStashKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A26918A18DCC1C6006A63B8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7A26918D18DCC1C6006A63B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -41,6 +45,10 @@
 		7A2691A718DCC1C6006A63B8 /* StashKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StashKitTests.m; sourceTree = "<group>"; };
 		7A2691B118DCC20B006A63B8 /* STKUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKUser.h; sourceTree = "<group>"; };
 		7A2691B218DCC20B006A63B8 /* STKUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKUser.m; sourceTree = "<group>"; };
+		7A2691C818DCD37B006A63B8 /* STKClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKClient.h; sourceTree = "<group>"; };
+		7A2691C918DCD37B006A63B8 /* STKClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKClient.m; sourceTree = "<group>"; };
+		7A2691CC18DCD5C2006A63B8 /* StashKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StashKit.h; sourceTree = "<group>"; };
+		AE86F9997BDC4B6D9A20B500 /* Pods-StashKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StashKit.xcconfig"; path = "Pods/Pods-StashKit.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A26918B18DCC1C6006A63B8 /* Cocoa.framework in Frameworks */,
+				10F98E90852847369AF4D937 /* libPods-StashKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +81,7 @@
 				7A2691A118DCC1C6006A63B8 /* StashKitTests */,
 				7A26918918DCC1C6006A63B8 /* Frameworks */,
 				7A26918818DCC1C6006A63B8 /* Products */,
+				AE86F9997BDC4B6D9A20B500 /* Pods-StashKit.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +100,7 @@
 				7A26918A18DCC1C6006A63B8 /* Cocoa.framework */,
 				7A26919B18DCC1C6006A63B8 /* XCTest.framework */,
 				7A26918C18DCC1C6006A63B8 /* Other Frameworks */,
+				0B1C3A4B72C04FCCA67C378D /* libPods-StashKit.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -110,6 +121,9 @@
 				7A26919118DCC1C6006A63B8 /* Supporting Files */,
 				7A2691B118DCC20B006A63B8 /* STKUser.h */,
 				7A2691B218DCC20B006A63B8 /* STKUser.m */,
+				7A2691C818DCD37B006A63B8 /* STKClient.h */,
+				7A2691C918DCD37B006A63B8 /* STKClient.m */,
+				7A2691CC18DCD5C2006A63B8 /* StashKit.h */,
 			);
 			path = StashKit;
 			sourceTree = "<group>";
@@ -147,6 +161,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A2691CA18DCD37B006A63B8 /* STKClient.h in Headers */,
 				7A2691B318DCC20B006A63B8 /* STKUser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,9 +173,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A2691AB18DCC1C6006A63B8 /* Build configuration list for PBXNativeTarget "StashKit" */;
 			buildPhases = (
+				3B26B8889C2F4DBCBE0DEFFE /* Check Pods Manifest.lock */,
 				7A26918318DCC1C6006A63B8 /* Sources */,
 				7A26918418DCC1C6006A63B8 /* Frameworks */,
 				7A26918518DCC1C6006A63B8 /* Headers */,
+				8F07A6714E7E400A8AD23A32 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -227,12 +244,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3B26B8889C2F4DBCBE0DEFFE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8F07A6714E7E400A8AD23A32 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-StashKit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7A26918318DCC1C6006A63B8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7A2691B418DCC20B006A63B8 /* STKUser.m in Sources */,
+				7A2691CB18DCD37B006A63B8 /* STKClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +389,7 @@
 		};
 		7A2691AC18DCC1C6006A63B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE86F9997BDC4B6D9A20B500 /* Pods-StashKit.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StashKit/StashKit-Prefix.pch";
@@ -347,6 +399,7 @@
 		};
 		7A2691AD18DCC1C6006A63B8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE86F9997BDC4B6D9A20B500 /* Pods-StashKit.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StashKit/StashKit-Prefix.pch";
@@ -409,6 +462,7 @@
 				7A2691AD18DCC1C6006A63B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7A2691AE18DCC1C6006A63B8 /* Build configuration list for PBXNativeTarget "StashKitTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +471,7 @@
 				7A2691B018DCC1C6006A63B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
