@@ -3,6 +3,7 @@
 
 target "StashKit" do
 	pod 'ReactiveCocoa', '~> 2.2'
+	pod 'Mantle', '~> 1.4'
 end
 
 target "StashKitTests" do

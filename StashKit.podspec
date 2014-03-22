@@ -13,5 +13,6 @@ Pod::Spec.new do |s|
 
   s.source_files = 'StashKit', 'StashKit/**/*.{h,m}'
   s.dependency 'ReactiveCocoa', '~> 2.2'
+  s.dependency 'Mantle', '~> 1.4'
 
 end
