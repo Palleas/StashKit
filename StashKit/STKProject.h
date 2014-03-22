@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Mantle/Mantle.h>
 
-@interface STKProject : NSObject
+@interface STKProject : MTLModel <MTLJSONSerializing>
 
 @property (copy) NSString *key;
 @property (copy) NSString *name;
-@property (strong) NSURL *url;
+@property (strong) NSURL *URL;
 @property (strong) NSNumber *identifier;
 
 @end

@@ -14,6 +14,7 @@ NSString * const STKClientResponseValuesKey = @"values";
 #import "STKProject.h"
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <Mantle/Mantle.h>
 
 @interface STKClient ()
 
@@ -86,13 +87,8 @@ NSString * const STKClientResponseValuesKey = @"values";
         NSMutableArray *projects = [NSMutableArray array];
 
         [list enumerateObjectsUsingBlock:^(NSDictionary *payload, NSUInteger idx, BOOL *stop) {
-            STKProject *project = [[STKProject alloc] init];
-            project.identifier = payload[@"id"];
-            project.key = payload[@"key"];
-            NSLog(@"Setting project name to %@", payload[@"name"]);
-            project.name = payload[@"name"];
-            project.url = [NSURL URLWithString: payload[@"url"]];
-
+            NSError *error = nil;
+            STKProject *project = [MTLJSONAdapter modelOfClass: [STKProject class] fromJSONDictionary: payload error: &error];
             [projects addObject: project];
         }];
 
