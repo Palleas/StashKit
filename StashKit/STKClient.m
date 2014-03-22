@@ -11,6 +11,7 @@ NSString * const STKClientResponseValuesKey = @"values";
 
 #import "STKClient.h"
 #import "STKUser.h"
+#import "STKProject.h"
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
@@ -82,7 +83,20 @@ NSString * const STKClientResponseValuesKey = @"values";
 
 - (RACSignal *)fetchProjects {
     return [[self sendRequestForRessource: @"projects" body: nil HTTPMethod: @"GET"] map:^id(NSArray *list) {
-        return list;
+        NSMutableArray *projects = [NSMutableArray array];
+
+        [list enumerateObjectsUsingBlock:^(NSDictionary *payload, NSUInteger idx, BOOL *stop) {
+            STKProject *project = [[STKProject alloc] init];
+            project.identifier = payload[@"id"];
+            project.key = payload[@"key"];
+            NSLog(@"Setting project name to %@", payload[@"name"]);
+            project.name = payload[@"name"];
+            project.url = [NSURL URLWithString: payload[@"url"]];
+
+            [projects addObject: project];
+        }];
+
+        return projects;
     }];
 }
 

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		10F98E90852847369AF4D937 /* libPods-StashKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1C3A4B72C04FCCA67C378D /* libPods-StashKit.a */; };
+		628042A718DD15240003FA59 /* STKProject.h in Headers */ = {isa = PBXBuildFile; fileRef = 628042A518DD15240003FA59 /* STKProject.h */; };
+		628042A818DD15240003FA59 /* STKProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 628042A618DD15240003FA59 /* STKProject.m */; };
 		7A26918B18DCC1C6006A63B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26918A18DCC1C6006A63B8 /* Cocoa.framework */; };
 		7A26919C18DCC1C6006A63B8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26919B18DCC1C6006A63B8 /* XCTest.framework */; };
 		7A26919D18DCC1C6006A63B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26918A18DCC1C6006A63B8 /* Cocoa.framework */; };
@@ -32,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		0B1C3A4B72C04FCCA67C378D /* libPods-StashKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StashKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		628042A518DD15240003FA59 /* STKProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKProject.h; sourceTree = "<group>"; };
+		628042A618DD15240003FA59 /* STKProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKProject.m; sourceTree = "<group>"; };
 		7A26918718DCC1C6006A63B8 /* libStashKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libStashKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A26918A18DCC1C6006A63B8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7A26918D18DCC1C6006A63B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -124,6 +128,8 @@
 				7A2691C818DCD37B006A63B8 /* STKClient.h */,
 				7A2691C918DCD37B006A63B8 /* STKClient.m */,
 				7A2691CC18DCD5C2006A63B8 /* StashKit.h */,
+				628042A518DD15240003FA59 /* STKProject.h */,
+				628042A618DD15240003FA59 /* STKProject.m */,
 			);
 			path = StashKit;
 			sourceTree = "<group>";
@@ -161,6 +167,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				628042A718DD15240003FA59 /* STKProject.h in Headers */,
 				7A2691CA18DCD37B006A63B8 /* STKClient.h in Headers */,
 				7A2691B318DCC20B006A63B8 /* STKUser.h in Headers */,
 			);
@@ -283,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A2691B418DCC20B006A63B8 /* STKUser.m in Sources */,
+				628042A818DD15240003FA59 /* STKProject.m in Sources */,
 				7A2691CB18DCD37B006A63B8 /* STKClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
