@@ -70,7 +70,7 @@ NSString * const STKClientResponseValuesKey = @"values";
                 return;
             }
 
-            [subscriber sendNext: results[@"values"]];
+            [subscriber sendNext: results[@"values"] ? results[@"values"] : results];
         }];
 
         [task resume];
@@ -93,6 +93,20 @@ NSString * const STKClientResponseValuesKey = @"values";
         }];
 
         return projects;
+    }];
+}
+
+- (RACSignal *)createProject:(NSString *)name key:(NSString *)key description:(NSString *)description avatar:(NSData *)avatar {
+    NSDictionary *body = @{@"key": key, @"name" : name, @"description" : description};
+    return [[self sendRequestForRessource: @"projects" body: body HTTPMethod: @"POST"] map:^id(NSDictionary *payload) {
+        NSError *error = nil;
+        STKProject *newProject = [MTLJSONAdapter modelOfClass: [STKProject class] fromJSONDictionary: payload error: &error];
+        if (error) {
+            NSLog(@"Got error = %@", error);
+            return nil;
+        }
+
+        return newProject;
     }];
 }
 

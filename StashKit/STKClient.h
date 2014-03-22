@@ -16,5 +16,6 @@
 - (instancetype)initWithUser:(STKUser *)user;
 
 - (RACSignal *)fetchProjects;
+- (RACSignal *)createProject:(NSString *)name key:(NSString *)key description:(NSString *)description avatar:(NSData *)avatar;
 
 @end
