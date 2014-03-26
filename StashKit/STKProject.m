@@ -11,7 +11,7 @@
 @implementation STKProject
 
 - (NSString *)description {
-    return [NSString stringWithFormat: @"<%@ #%@ %@ - %@>", NSStringFromClass([self class]), self.identifier, self.key, self.name];
+    return [NSString stringWithFormat: @"<%@ #%@ %@ - %@>", NSStringFromClass([self class]), self.identifier ?: @"No identifier", self.key ?: @"No key", self.name ?: @"No name"];
 }
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {

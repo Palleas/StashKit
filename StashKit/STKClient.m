@@ -12,6 +12,7 @@ NSString * const STKClientResponseValuesKey = @"values";
 #import "STKClient.h"
 #import "STKUser.h"
 #import "STKProject.h"
+#import "STKRepository.h"
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Mantle/Mantle.h>
@@ -63,6 +64,8 @@ NSString * const STKClientResponseValuesKey = @"values";
                 return;
             }
 
+            NSInteger integer = [(NSHTTPURLResponse *)response statusCode];
+
             NSError *jsonError = nil;
             id results = [NSJSONSerialization JSONObjectWithData: data options: 0 error: &jsonError];
             if (jsonError) {
@@ -101,6 +104,22 @@ NSString * const STKClientResponseValuesKey = @"values";
     return [[self sendRequestForRessource: @"projects" body: body HTTPMethod: @"POST"] map:^id(NSDictionary *payload) {
         NSError *error = nil;
         STKProject *newProject = [MTLJSONAdapter modelOfClass: [STKProject class] fromJSONDictionary: payload error: &error];
+        if (error) {
+            NSLog(@"Got error = %@", error);
+            return nil;
+        }
+
+        return newProject;
+    }];
+}
+
+- (RACSignal *)createRepository:(NSString *)name projectKey:(NSString *)key scmId:(NSString *)scmId forkable:(BOOL)forkable {
+    NSDictionary *body = @{@"projectKey": key, @"name" : name, @"scmId" : scmId, @"forkable": @(forkable)};
+    NSString *endpoint = [NSString stringWithFormat: @"projects/%@/repos", key];
+    return [[self sendRequestForRessource: endpoint body: body HTTPMethod: @"POST"] map:^id(NSDictionary *payload) {
+        NSLog(@"payload = %@", payload);
+        NSError *error = nil;
+        STKProject *newProject = [MTLJSONAdapter modelOfClass: [STKRepository class] fromJSONDictionary: payload error: &error];
         if (error) {
             NSLog(@"Got error = %@", error);
             return nil;
