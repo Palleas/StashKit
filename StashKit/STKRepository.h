@@ -13,5 +13,11 @@
 
 @property (copy) NSString *name;
 @property (strong) NSNumber *identifier;
+@property (copy) NSArray *cloneURLs;
+
+/**
+ *  Return the default clone URL for a repository (preferably the SSH-based one)
+ */
+- (NSString *)cloneURL;
 
 @end

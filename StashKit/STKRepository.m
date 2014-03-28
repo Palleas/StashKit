@@ -11,12 +11,20 @@
 @implementation STKRepository
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{@"name" : @"name",
-             @"identifier" : @"id",
+    return @{@"name"        : @"name",
+             @"identifier"  : @"id",
+             @"cloneURLs"   : @"links.clone"
              };
 }
 
 - (NSString *)description {
     return [NSString stringWithFormat: @"<%@ #%@ %@>", NSStringFromClass([self class]), self.identifier ?: @"No identifier", self.name ?: @"No name"];
 }
+
+- (NSString *)cloneURL {
+    return [[self.cloneURLs sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *url1, NSDictionary *url2) {
+        return [url1[@"name"] isEqualToString: @"ssh"] ? NSOrderedAscending : NSOrderedDescending;
+    }] firstObject][@"href"];
+}
+
 @end
