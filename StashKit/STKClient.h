@@ -15,7 +15,7 @@
 
 - (instancetype)initWithUser:(STKUser *)user;
 
-- (RACSignal *)fetchProjects;
+- (RACSignal *)fetchProjects:(BOOL)fetchAll;
 - (RACSignal *)createProject:(NSString *)name key:(NSString *)key description:(NSString *)description avatar:(NSData *)avatar;
 
 - (RACSignal *)createRepository:(NSString *)name projectKey:(NSString *)key scmId:(NSString *)scmId forkable:(BOOL)forkable;
