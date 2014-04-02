@@ -52,36 +52,38 @@ NSString * const STKClientResponseValuesKey = @"values";
             }
 
             // This is a paged API
-            if (payload[@"values"]) {
-                if (fetchAll && ![payload[@"isLastPage"] boolValue]) {
-                    // TODO load more
-                }
-
-                [payload[@"values"] enumerateObjectsUsingBlock:^(NSDictionary *objectPayload, NSUInteger idx, BOOL *stop) {
-                    NSError *jsonError = nil;
-                    STKProject *project = [MTLJSONAdapter modelOfClass: class fromJSONDictionary: objectPayload error: &jsonError];
-
-                    if (jsonError) {
-                        [subscriber sendError: jsonError];
-                        *stop = YES;
-                        return;
-                    }
-
-                    [subscriber sendNext: project];
-                }];
-            } else {
-                NSError *jsonError = nil;
-                STKProject *project = [MTLJSONAdapter modelOfClass: class fromJSONDictionary: payload error: &jsonError];
-
-                if (jsonError) {
-                    [subscriber sendError: jsonError];
-                    return;
-                }
-
-                [subscriber sendNext: project];
-            }
-
-            [subscriber sendCompleted];
+            RACSignal *nextPageSignal = [RACSignal empty];
+            [[[RACSignal return:RACTuplePack(payload)] concat: nextPageSignal] subscribe: subscriber];
+//            if (payload[@"values"]) {
+//                if (fetchAll && ![payload[@"isLastPage"] boolValue]) {
+//                    // TODO load more
+//                }
+//
+//                [payload[@"values"] enumerateObjectsUsingBlock:^(NSDictionary *objectPayload, NSUInteger idx, BOOL *stop) {
+//                    NSError *jsonError = nil;
+//                    STKProject *project = [MTLJSONAdapter modelOfClass: class fromJSONDictionary: objectPayload error: &jsonError];
+//
+//                    if (jsonError) {
+//                        [subscriber sendError: jsonError];
+//                        *stop = YES;
+//                        return;
+//                    }
+//
+//                    [subscriber sendNext: project];
+//                }];
+//            } else {
+//                NSError *jsonError = nil;
+//                STKProject *project = [MTLJSONAdapter modelOfClass: class fromJSONDictionary: payload error: &jsonError];
+//
+//                if (jsonError) {
+//                    [subscriber sendError: jsonError];
+//                    return;
+//                }
+//
+//                [subscriber sendNext: project];
+//            }
+//
+//            [subscriber sendCompleted];
         }];
 
         [task resume];
@@ -117,7 +119,42 @@ NSString * const STKClientResponseValuesKey = @"values";
     [request setValue: @"application/json" forHTTPHeaderField: @"Content-Type"];
     [request setValue: @"application/json" forHTTPHeaderField: @"Accept"];
 
-    return [self enqueueRequest: request modelClass: [STKProject class] fetchAllPages: all];
+    return [[[self enqueueRequest: request modelClass: [STKProject class] fetchAllPages: all] reduceEach:^id (NSDictionary *payload){
+        NSLog(@"Reducing each payload");
+
+        return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            if (payload[@"values"]) {
+                [payload[@"values"] enumerateObjectsUsingBlock:^(NSDictionary *objectPayload, NSUInteger idx, BOOL *stop) {
+                    NSError *jsonError = nil;
+                    STKProject *project = [MTLJSONAdapter modelOfClass: [STKProject class] fromJSONDictionary: objectPayload error: &jsonError];
+
+                    if (jsonError) {
+                        [subscriber sendError: jsonError];
+                        *stop = YES;
+                        return;
+                    }
+
+                    [subscriber sendNext: project];
+                }];
+            } else {
+                NSError *jsonError = nil;
+                STKProject *project = [MTLJSONAdapter modelOfClass: [STKProject class] fromJSONDictionary: payload error: &jsonError];
+
+                if (jsonError) {
+                    [subscriber sendError: jsonError];
+                } else {
+                    [subscriber sendNext: project];
+                }
+            }
+
+            [subscriber sendCompleted];
+
+            return nil;
+        }] map:^id(id value) {
+            NSLog(@"wat");
+            return value;
+        }];
+    }] concat];
 }
 
 - (RACSignal *)createProject:(NSString *)name key:(NSString *)key description:(NSString *)description avatar:(NSData *)avatar {
@@ -136,9 +173,7 @@ NSString * const STKClientResponseValuesKey = @"values";
 }
 
 - (RACSignal *)createRepository:(NSString *)name projectKey:(NSString *)key scmId:(NSString *)scmId forkable:(BOOL)forkable {
-    return [[RACSignal empty] reduceEach:^id{
-
-    }];
+    return nil;
 //    NSDictionary *body = @{@"projectKey": key, @"name" : name, @"scmId" : scmId, @"forkable": @(forkable)};
 //    NSString *endpoint = [NSString stringWithFormat: @"projects/%@/repos", key];
 //    return [[self sendRequestForRessource: endpoint body: body HTTPMethod: @"POST"] map:^id(NSDictionary *payload) {
