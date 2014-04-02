@@ -122,7 +122,7 @@ NSString * const STKClientResponseValuesKey = @"values";
     return [[[self enqueueRequest: request modelClass: [STKProject class] fetchAllPages: all] reduceEach:^id (NSDictionary *payload){
         NSLog(@"Reducing each payload");
 
-        return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             if (payload[@"values"]) {
                 [payload[@"values"] enumerateObjectsUsingBlock:^(NSDictionary *objectPayload, NSUInteger idx, BOOL *stop) {
                     NSError *jsonError = nil;
@@ -150,9 +150,6 @@ NSString * const STKClientResponseValuesKey = @"values";
             [subscriber sendCompleted];
 
             return nil;
-        }] map:^id(id value) {
-            NSLog(@"wat");
-            return value;
         }];
     }] concat];
 }
