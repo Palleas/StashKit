@@ -53,37 +53,13 @@ NSString * const STKClientResponseValuesKey = @"values";
 
             // This is a paged API
             RACSignal *nextPageSignal = [RACSignal empty];
+            if (fetchAll && payload[@"values"] && ![payload[@"isLastPage"] boolValue]) {
+                NSURLRequest *nextPageRequest = [self createNextPageRequest: request nextStart: payload[@"nextPageStart"]];
+                NSLog(@"Next page URL = %@", nextPageRequest.URL);
+                nextPageSignal = [self enqueueRequest: nextPageRequest modelClass: class fetchAllPages: fetchAll];
+            }
+
             [[[RACSignal return:RACTuplePack(payload)] concat: nextPageSignal] subscribe: subscriber];
-//            if (payload[@"values"]) {
-//                if (fetchAll && ![payload[@"isLastPage"] boolValue]) {
-//                    // TODO load more
-//                }
-//
-//                [payload[@"values"] enumerateObjectsUsingBlock:^(NSDictionary *objectPayload, NSUInteger idx, BOOL *stop) {
-//                    NSError *jsonError = nil;
-//                    STKProject *project = [MTLJSONAdapter modelOfClass: class fromJSONDictionary: objectPayload error: &jsonError];
-//
-//                    if (jsonError) {
-//                        [subscriber sendError: jsonError];
-//                        *stop = YES;
-//                        return;
-//                    }
-//
-//                    [subscriber sendNext: project];
-//                }];
-//            } else {
-//                NSError *jsonError = nil;
-//                STKProject *project = [MTLJSONAdapter modelOfClass: class fromJSONDictionary: payload error: &jsonError];
-//
-//                if (jsonError) {
-//                    [subscriber sendError: jsonError];
-//                    return;
-//                }
-//
-//                [subscriber sendNext: project];
-//            }
-//
-//            [subscriber sendCompleted];
         }];
 
         [task resume];
