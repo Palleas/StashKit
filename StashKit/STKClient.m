@@ -30,13 +30,18 @@ NSString * const STKClientResponseValuesKey = @"values";
     self = [super init];
     if (self) {
         self.user = user;
-        self.session = [NSURLSession sharedSession]; // FIXME
+
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        configuration.HTTPAdditionalHeaders = @{@"Content-Type" : @"application/json",
+                                                @"Accept" : @"application/json",
+                                                @"Authorization" : [self.user HTTPBasicAuthorizationHeaderValue]};
+        self.session = [NSURLSession sessionWithConfiguration: configuration];
     }
     
     return self;
 }
 
-- (RACSignal *)enqueueRequest:(NSURLRequest *)request modelClass:(Class)class fetchAllPages:(BOOL)fetchAll {
+- (RACSignal *)enqueueRequest:(NSURLRequest *)request fetchAllPages:(BOOL)fetchAll {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSURLSessionDataTask *task = [self.session dataTaskWithRequest: request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             if (error) {
@@ -55,11 +60,10 @@ NSString * const STKClientResponseValuesKey = @"values";
             RACSignal *nextPageSignal = [RACSignal empty];
             if (fetchAll && payload[@"values"] && ![payload[@"isLastPage"] boolValue]) {
                 NSURLRequest *nextPageRequest = [self createNextPageRequest: request nextStart: payload[@"nextPageStart"]];
-                NSLog(@"Next page URL = %@", nextPageRequest.URL);
-                nextPageSignal = [self enqueueRequest: nextPageRequest modelClass: class fetchAllPages: fetchAll];
+                nextPageSignal = [self enqueueRequest: nextPageRequest fetchAllPages: fetchAll];
             }
 
-            [[[RACSignal return:RACTuplePack(payload)] concat: nextPageSignal] subscribe: subscriber];
+            [[[RACSignal return: RACTuplePack(payload)] concat: nextPageSignal] subscribe: subscriber];
         }];
 
         [task resume];
@@ -67,8 +71,37 @@ NSString * const STKClientResponseValuesKey = @"values";
         return [RACDisposable disposableWithBlock:^{
             [task cancel];
         }];
-
     }];
+}
+
+- (RACSignal *)enqueueRequest:(NSURLRequest *)request modelClass:(Class)class fetchAllPages:(BOOL)fetchAll {
+    return [[[self enqueueRequest: request fetchAllPages: fetchAll] reduceEach:^id (NSDictionary *payload){
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            void(^parsePayload)(NSDictionary *) = ^void(NSDictionary *payload) {
+                NSError *jsonError = nil;
+                MTLModel *model = [MTLJSONAdapter modelOfClass: class fromJSONDictionary: payload error: &jsonError];
+                if (jsonError) {
+                    [subscriber sendError: jsonError];
+                }
+
+                [subscriber sendNext: model];
+            };
+
+            if ([payload[@"values"] isKindOfClass: [NSArray class]]) {
+                [payload[@"values"] enumerateObjectsUsingBlock:^(NSDictionary *modelPayload, NSUInteger idx, BOOL *stop) {
+                    parsePayload(modelPayload);
+                }];
+                [subscriber sendCompleted];
+            } else if ([payload isKindOfClass: [NSDictionary class]]) {
+                parsePayload(payload);
+                [subscriber sendCompleted];
+            } else {
+                [subscriber sendError: [NSError errorWithDomain: @"wut" code: 1 userInfo: nil]];
+            }
+
+            return nil;
+        }];
+    }] concat];
 }
 
 - (NSURLRequest *)createNextPageRequest:(NSURLRequest *)request nextStart:(NSNumber *)nextStart {
@@ -87,79 +120,32 @@ NSString * const STKClientResponseValuesKey = @"values";
 }
 
 
-- (RACSignal *)fetchProjects:(BOOL)all {
+- (RACSignal *)fetchProjects {
     NSURL *url = [[self.user.baseUrl URLByAppendingPathComponent: STKClientAPIEndPoint] URLByAppendingPathComponent: @"projects"];
 
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: url];
-    [request setValue: [self.user HTTPBasicAuthorizationHeaderValue] forHTTPHeaderField: @"Authorization"];
-    [request setValue: @"application/json" forHTTPHeaderField: @"Content-Type"];
-    [request setValue: @"application/json" forHTTPHeaderField: @"Accept"];
-
-    return [[[self enqueueRequest: request modelClass: [STKProject class] fetchAllPages: all] reduceEach:^id (NSDictionary *payload){
-        NSLog(@"Reducing each payload");
-
-        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            if (payload[@"values"]) {
-                [payload[@"values"] enumerateObjectsUsingBlock:^(NSDictionary *objectPayload, NSUInteger idx, BOOL *stop) {
-                    NSError *jsonError = nil;
-                    STKProject *project = [MTLJSONAdapter modelOfClass: [STKProject class] fromJSONDictionary: objectPayload error: &jsonError];
-
-                    if (jsonError) {
-                        [subscriber sendError: jsonError];
-                        *stop = YES;
-                        return;
-                    }
-
-                    [subscriber sendNext: project];
-                }];
-            } else {
-                NSError *jsonError = nil;
-                STKProject *project = [MTLJSONAdapter modelOfClass: [STKProject class] fromJSONDictionary: payload error: &jsonError];
-
-                if (jsonError) {
-                    [subscriber sendError: jsonError];
-                } else {
-                    [subscriber sendNext: project];
-                }
-            }
-
-            [subscriber sendCompleted];
-
-            return nil;
-        }];
-    }] concat];
+    return [self enqueueRequest: [NSURLRequest requestWithURL: url] modelClass: [STKProject class] fetchAllPages: YES];
 }
 
 - (RACSignal *)createProject:(NSString *)name key:(NSString *)key description:(NSString *)description avatar:(NSData *)avatar {
-    return nil;
-//    NSDictionary *body = @{@"key": key, @"name" : name, @"description" : description};
-//    return [[self sendRequestForRessource: @"projects" body: body HTTPMethod: @"POST"] map:^id(NSDictionary *payload) {
-//        NSError *error = nil;
-//        STKProject *newProject = [MTLJSONAdapter modelOfClass: [STKProject class] fromJSONDictionary: payload error: &error];
-//        if (error) {
-//            NSLog(@"Got error = %@", error);
-//            return nil;
-//        }
-//
-//        return newProject;
-//    }];
+    NSDictionary *body = @{@"key": key, @"name" : name, @"description" : description};
+    NSURL *url = [[self.user.baseUrl URLByAppendingPathComponent: STKClientAPIEndPoint] URLByAppendingPathComponent: @"projects"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: url];
+    NSError *jsonError = nil;
+    request.HTTPBody = [NSJSONSerialization dataWithJSONObject: body options: 0 error: &jsonError];
+    request.HTTPMethod = @"POST";
+
+    return [self enqueueRequest: request modelClass: [STKProject class] fetchAllPages: YES];
 }
 
-- (RACSignal *)createRepository:(NSString *)name projectKey:(NSString *)key scmId:(NSString *)scmId forkable:(BOOL)forkable {
-    return nil;
-//    NSDictionary *body = @{@"projectKey": key, @"name" : name, @"scmId" : scmId, @"forkable": @(forkable)};
-//    NSString *endpoint = [NSString stringWithFormat: @"projects/%@/repos", key];
-//    return [[self sendRequestForRessource: endpoint body: body HTTPMethod: @"POST"] map:^id(NSDictionary *payload) {
-//        NSLog(@"payload = %@", payload);
-//        NSError *error = nil;
-//        STKProject *newProject = [MTLJSONAdapter modelOfClass: [STKRepository class] fromJSONDictionary: payload error: &error];
-//        if (error) {
-//            NSLog(@"Got error = %@", error);
-//            return nil;
-//        }
-//
-//        return newProject;
-//    }];
+- (RACSignal *)createRepository:(NSString *)name projectKey:(NSString *)key forkable:(BOOL)forkable {
+    NSDictionary *body = @{@"projectKey": key, @"name" : name, @"scmId" : @"git", @"forkable": @(forkable)};
+    NSURL *url = [self.user.baseUrl URLByAppendingPathComponent: [NSString stringWithFormat: @"projects/%@/repos", key]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: url];
+    NSError *jsonError = nil;
+    request.HTTPBody = [NSJSONSerialization dataWithJSONObject: body options: 0 error: &jsonError];
+    request.HTTPMethod = @"POST";
+
+    return [self enqueueRequest: request modelClass: [STKRepository class] fetchAllPages: YES];
 }
 
 @end

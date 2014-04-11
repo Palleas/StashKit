@@ -15,10 +15,10 @@
 
 - (instancetype)initWithUser:(STKUser *)user;
 
-- (RACSignal *)fetchProjects:(BOOL)fetchAll;
+- (RACSignal *)fetchProjects;
 - (RACSignal *)createProject:(NSString *)name key:(NSString *)key description:(NSString *)description avatar:(NSData *)avatar;
 
-- (RACSignal *)createRepository:(NSString *)name projectKey:(NSString *)key scmId:(NSString *)scmId forkable:(BOOL)forkable;
+- (RACSignal *)createRepository:(NSString *)name projectKey:(NSString *)key forkable:(BOOL)forkable;
 
 - (NSURLRequest *)createNextPageRequest:(NSURLRequest *)request nextStart:(NSNumber *)nextStart;
 
