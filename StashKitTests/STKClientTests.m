@@ -21,7 +21,9 @@
     [request setValue: @"application/json" forHTTPHeaderField: @"Content-Type"];
     [request setValue: @"application/json" forHTTPHeaderField: @"Accept"];
 
-    STKClient *client = [[STKClient alloc] initWithUser: nil];
+    STKClient *client = [[STKClient alloc] initWithUsername: @"hal.jordan"
+                                                   password: @"b3w4r3"
+                                                    baseUrl: [NSURL URLWithString: @"http://stash.oa.net"]];
     NSURLRequest *nextRequest = [client createNextPageRequest: request nextStart: @26];
 
     XCTAssertEqualObjects([request allHTTPHeaderFields], [nextRequest allHTTPHeaderFields], @"Both request you have the same headers");
