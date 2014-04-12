@@ -9,6 +9,8 @@
 NSString * const STKClientAPIEndPoint = @"/rest/api/1.0/";
 NSString * const STKClientResponseValuesKey = @"values";
 
+NSString * const STKClientErrorDomain = @"STKClientErrorDomain";
+
 #import "STKClient.h"
 #import "STKProject.h"
 #import "STKRepository.h"
@@ -72,7 +74,7 @@ NSString * const STKClientResponseValuesKey = @"values";
                 nextPageSignal = [self enqueueRequest: nextPageRequest fetchAllPages: fetchAll];
             }
 
-            [[[RACSignal return: RACTuplePack(payload)] concat: nextPageSignal] subscribe: subscriber];
+            [[[RACSignal return: RACTuplePack(payload, response)] concat: nextPageSignal] subscribe: subscriber];
         }];
 
         [task resume];
@@ -84,7 +86,7 @@ NSString * const STKClientResponseValuesKey = @"values";
 }
 
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request modelClass:(Class)class fetchAllPages:(BOOL)fetchAll {
-    return [[[self enqueueRequest: request fetchAllPages: fetchAll] reduceEach:^id (NSDictionary *payload){
+    return [[[self enqueueRequest: request fetchAllPages: fetchAll] reduceEach:^id (NSDictionary *payload, NSHTTPURLResponse *response) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             void(^parsePayload)(NSDictionary *) = ^void(NSDictionary *payload) {
                 NSError *jsonError = nil;
@@ -95,6 +97,14 @@ NSString * const STKClientResponseValuesKey = @"values";
 
                 [subscriber sendNext: model];
             };
+
+            if (409 == response.statusCode) {
+                NSError *conflictError = [NSError errorWithDomain: STKClientErrorDomain
+                                                     code: STKClientErrorCodeConflict
+                                                 userInfo: @{}];
+                [subscriber sendError: conflictError];
+                return nil;
+            }
 
             if ([payload[@"values"] isKindOfClass: [NSArray class]]) {
                 [payload[@"values"] enumerateObjectsUsingBlock:^(NSDictionary *modelPayload, NSUInteger idx, BOOL *stop) {

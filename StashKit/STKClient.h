@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const STKClientErrorDomain;
+
+typedef NS_ENUM(NSUInteger, STKClientErrorCode) {
+    STKClientErrorCodeConflict = 1
+};
+
 @class RACSignal;
 @class STKUser;
 
