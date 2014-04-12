@@ -10,7 +10,6 @@ NSString * const STKClientAPIEndPoint = @"/rest/api/1.0/";
 NSString * const STKClientResponseValuesKey = @"values";
 
 #import "STKClient.h"
-#import "STKUser.h"
 #import "STKProject.h"
 #import "STKRepository.h"
 
@@ -20,21 +19,31 @@ NSString * const STKClientResponseValuesKey = @"values";
 @interface STKClient ()
 
 @property (nonatomic, strong) NSURLSession *session;
-@property (nonatomic, strong) STKUser *user;
+
+@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *password;
+@property (nonatomic, strong) NSURL *baseUrl;
 
 @end
 
 @implementation STKClient
 
-- (id)initWithUser:(STKUser *)user {
+- (instancetype)initWithUsername:(NSString *)username password:(NSString *)password baseUrl:(NSURL *)baseUrl {
     self = [super init];
     if (self) {
-        self.user = user;
+        self.username = username;
+        self.password = password;
+        self.baseUrl = baseUrl;
+
+        NSData *credentials = [[[NSString stringWithFormat: @"%@:%@", self.username, self.password] dataUsingEncoding: NSUTF8StringEncoding] base64EncodedDataWithOptions: 0];
+
+        NSString *hashedCredentials = [[NSString alloc] initWithData: credentials encoding: NSUTF8StringEncoding];
 
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         configuration.HTTPAdditionalHeaders = @{@"Content-Type" : @"application/json",
                                                 @"Accept" : @"application/json",
-                                                @"Authorization" : [self.user HTTPBasicAuthorizationHeaderValue]};
+                                                @"Authorization" : [NSString stringWithFormat: @"Basic %@", hashedCredentials]};
+
         self.session = [NSURLSession sessionWithConfiguration: configuration];
     }
     
@@ -121,14 +130,14 @@ NSString * const STKClientResponseValuesKey = @"values";
 
 
 - (RACSignal *)fetchProjects {
-    NSURL *url = [[self.user.baseUrl URLByAppendingPathComponent: STKClientAPIEndPoint] URLByAppendingPathComponent: @"projects"];
+    NSURL *url = [[self.baseUrl URLByAppendingPathComponent: STKClientAPIEndPoint] URLByAppendingPathComponent: @"projects"];
 
     return [self enqueueRequest: [NSURLRequest requestWithURL: url] modelClass: [STKProject class] fetchAllPages: YES];
 }
 
 - (RACSignal *)createProject:(NSString *)name key:(NSString *)key description:(NSString *)description avatar:(NSData *)avatar {
     NSDictionary *body = @{@"key": key, @"name" : name, @"description" : description};
-    NSURL *url = [[self.user.baseUrl URLByAppendingPathComponent: STKClientAPIEndPoint] URLByAppendingPathComponent: @"projects"];
+    NSURL *url = [[self.baseUrl URLByAppendingPathComponent: STKClientAPIEndPoint] URLByAppendingPathComponent: @"projects"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: url];
     NSError *jsonError = nil;
     request.HTTPBody = [NSJSONSerialization dataWithJSONObject: body options: 0 error: &jsonError];
@@ -139,7 +148,7 @@ NSString * const STKClientResponseValuesKey = @"values";
 
 - (RACSignal *)createRepository:(NSString *)name projectKey:(NSString *)key forkable:(BOOL)forkable {
     NSDictionary *body = @{@"projectKey": key, @"name" : name, @"scmId" : @"git", @"forkable": @(forkable)};
-    NSURL *url = [self.user.baseUrl URLByAppendingPathComponent: [NSString stringWithFormat: @"projects/%@/repos", key]];
+    NSURL *url = [self.baseUrl URLByAppendingPathComponent: [NSString stringWithFormat: @"projects/%@/repos", key]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: url];
     NSError *jsonError = nil;
     request.HTTPBody = [NSJSONSerialization dataWithJSONObject: body options: 0 error: &jsonError];

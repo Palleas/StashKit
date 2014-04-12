@@ -13,7 +13,7 @@
 
 @interface STKClient : NSObject
 
-- (instancetype)initWithUser:(STKUser *)user;
+- (instancetype)initWithUsername:(NSString *)name password:(NSString *)password baseUrl:(NSURL *)url;
 
 - (RACSignal *)fetchProjects;
 - (RACSignal *)createProject:(NSString *)name key:(NSString *)key description:(NSString *)description avatar:(NSData *)avatar;

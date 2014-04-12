@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Perfectly-Cooked. All rights reserved.
 //
 
-#import "STKUser.h"
 #import "STKClient.h"
 #import "STKProject.h"
 #import "STKRepository.h"
