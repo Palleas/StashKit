@@ -7,6 +7,9 @@ target "StashKit" do
 end
 
 target "StashKitTests" do
-
+	pod 'OCMock', '~> 2.2'
+	pod 'Specta', '~> 0.2.1'
+	pod 'Expecta', '~> 0.3'
+	pod 'OHHTTPStubs', '~> 3.1'
 end
 

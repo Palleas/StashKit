@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0194ECDB79A24A698734E852 /* libPods-StashKitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B7BA2458654CF88B7F48CF /* libPods-StashKitTests.a */; };
 		10F98E90852847369AF4D937 /* libPods-StashKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1C3A4B72C04FCCA67C378D /* libPods-StashKit.a */; };
 		628042A718DD15240003FA59 /* STKProject.h in Headers */ = {isa = PBXBuildFile; fileRef = 628042A518DD15240003FA59 /* STKProject.h */; };
 		628042A818DD15240003FA59 /* STKProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 628042A618DD15240003FA59 /* STKProject.m */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		0B1C3A4B72C04FCCA67C378D /* libPods-StashKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StashKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		34B7BA2458654CF88B7F48CF /* libPods-StashKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StashKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		628042A518DD15240003FA59 /* STKProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKProject.h; sourceTree = "<group>"; };
 		628042A618DD15240003FA59 /* STKProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKProject.m; sourceTree = "<group>"; };
 		62AE838318E510040003F813 /* STKRepositoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKRepositoryTests.m; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 		7A2691C818DCD37B006A63B8 /* STKClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKClient.h; sourceTree = "<group>"; };
 		7A2691C918DCD37B006A63B8 /* STKClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKClient.m; sourceTree = "<group>"; };
 		7A2691CC18DCD5C2006A63B8 /* StashKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StashKit.h; sourceTree = "<group>"; };
+		84CB1D9C58214ECEAA1DE2C4 /* Pods-StashKitTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StashKitTests.xcconfig"; path = "Pods/Pods-StashKitTests.xcconfig"; sourceTree = "<group>"; };
 		AE86F9997BDC4B6D9A20B500 /* Pods-StashKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StashKit.xcconfig"; path = "Pods/Pods-StashKit.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +77,7 @@
 				7A26919D18DCC1C6006A63B8 /* Cocoa.framework in Frameworks */,
 				7A2691A018DCC1C6006A63B8 /* libStashKit.a in Frameworks */,
 				7A26919C18DCC1C6006A63B8 /* XCTest.framework in Frameworks */,
+				0194ECDB79A24A698734E852 /* libPods-StashKitTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +92,7 @@
 				7A26918918DCC1C6006A63B8 /* Frameworks */,
 				7A26918818DCC1C6006A63B8 /* Products */,
 				AE86F9997BDC4B6D9A20B500 /* Pods-StashKit.xcconfig */,
+				84CB1D9C58214ECEAA1DE2C4 /* Pods-StashKitTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,6 +112,7 @@
 				7A26919B18DCC1C6006A63B8 /* XCTest.framework */,
 				7A26918C18DCC1C6006A63B8 /* Other Frameworks */,
 				0B1C3A4B72C04FCCA67C378D /* libPods-StashKit.a */,
+				34B7BA2458654CF88B7F48CF /* libPods-StashKitTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -202,9 +208,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A2691AE18DCC1C6006A63B8 /* Build configuration list for PBXNativeTarget "StashKitTests" */;
 			buildPhases = (
+				A5340497837C43AF9764687F /* Check Pods Manifest.lock */,
 				7A26919618DCC1C6006A63B8 /* Sources */,
 				7A26919718DCC1C6006A63B8 /* Frameworks */,
 				7A26919818DCC1C6006A63B8 /* Resources */,
+				8F5379AEC0B14AECB980D93D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -222,7 +230,8 @@
 		7A26917F18DCC1C6006A63B8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				CLASSPREFIX = STK;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Perfectly-Cooked";
 			};
 			buildConfigurationList = 7A26918218DCC1C6006A63B8 /* Build configuration list for PBXProject "StashKit" */;
@@ -283,6 +292,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-StashKit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F5379AEC0B14AECB980D93D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-StashKitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5340497837C43AF9764687F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -403,6 +442,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AE86F9997BDC4B6D9A20B500 /* Pods-StashKit.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StashKit/StashKit-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -413,6 +453,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AE86F9997BDC4B6D9A20B500 /* Pods-StashKit.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StashKit/StashKit-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -421,7 +462,7 @@
 		};
 		7A2691AF18DCC1C6006A63B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE86F9997BDC4B6D9A20B500 /* Pods-StashKit.xcconfig */;
+			baseConfigurationReference = 84CB1D9C58214ECEAA1DE2C4 /* Pods-StashKitTests.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -442,6 +483,7 @@
 		};
 		7A2691B018DCC1C6006A63B8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84CB1D9C58214ECEAA1DE2C4 /* Pods-StashKitTests.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
