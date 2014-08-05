@@ -33,9 +33,9 @@ NSString * const STKClientErrorDomain = @"STKClientErrorDomain";
 - (instancetype)initWithUsername:(NSString *)username password:(NSString *)password baseUrl:(NSURL *)baseUrl {
     self = [super init];
     if (self) {
-        self.username = username;
-        self.password = password;
-        self.baseUrl = baseUrl;
+        _username = [username copy];
+        _password = [password copy];
+        _baseUrl = [baseUrl copy];
 
         NSData *credentials = [[[NSString stringWithFormat: @"%@:%@", self.username, self.password] dataUsingEncoding: NSUTF8StringEncoding] base64EncodedDataWithOptions: 0];
 
@@ -46,7 +46,7 @@ NSString * const STKClientErrorDomain = @"STKClientErrorDomain";
                                                 @"Accept" : @"application/json",
                                                 @"Authorization" : [NSString stringWithFormat: @"Basic %@", hashedCredentials]};
 
-        self.session = [NSURLSession sessionWithConfiguration: configuration];
+        _session = [NSURLSession sessionWithConfiguration: configuration];
     }
     
     return self;
