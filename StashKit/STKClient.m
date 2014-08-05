@@ -115,7 +115,7 @@ NSString * const STKClientErrorDomain = @"STKClientErrorDomain";
                 parsePayload(payload);
                 [subscriber sendCompleted];
             } else {
-                [subscriber sendError: [NSError errorWithDomain: @"wut" code: 1 userInfo: nil]];
+                [subscriber sendError: [NSError errorWithDomain: STKClientErrorDomain code: STKClientErrorCodeUnexpectedResponse userInfo: nil]];
             }
 
             return nil;

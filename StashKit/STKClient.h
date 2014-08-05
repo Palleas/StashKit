@@ -11,7 +11,8 @@
 extern NSString * const STKClientErrorDomain;
 
 typedef NS_ENUM(NSUInteger, STKClientErrorCode) {
-    STKClientErrorCodeConflict = 1
+    STKClientErrorCodeConflict = 1,
+    STKClientErrorCodeUnexpectedResponse
 };
 
 @class RACSignal;
