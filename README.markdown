@@ -2,5 +2,4 @@
 
 Objective-C Wrapper for Atlassian Stash REST API.
 
-## Getting started
-
+:warning: :warning: INSERT BIG WIP WARNING HERE :warning: :warning:
