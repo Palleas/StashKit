@@ -152,19 +152,36 @@ NSString * const STKClientErrorDomain = @"STKClientErrorDomain";
     NSError *jsonError = nil;
     request.HTTPBody = [NSJSONSerialization dataWithJSONObject: body options: 0 error: &jsonError];
     request.HTTPMethod = @"POST";
+    
+    if (jsonError) {
+        return [RACSignal error: jsonError];
+    }
 
     return [self enqueueRequest: request modelClass: [STKProject class] fetchAllPages: YES];
 }
 
 - (RACSignal *)createRepository:(NSString *)name projectKey:(NSString *)key forkable:(BOOL)forkable {
     NSDictionary *body = @{@"projectKey": key, @"name" : name, @"scmId" : @"git", @"forkable": @(forkable)};
-    NSURL *url = [self.baseUrl URLByAppendingPathComponent: [NSString stringWithFormat: @"projects/%@/repos", key]];
+
+    NSURLRequest *request = [self requestWithEndpoint: [NSString stringWithFormat: @"projects/%@/repos", key]
+                                               method: @"POST"
+                                              payload: body];
+    return [self enqueueRequest: request modelClass: [STKRepository class] fetchAllPages: YES];
+}
+
+- (NSURLRequest *)requestWithEndpoint:(NSString *)endpoint method:(NSString *)method payload:(id)payload {
+    NSURL *url = [self.baseUrl URLByAppendingPathComponent: endpoint];
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: url];
     NSError *jsonError = nil;
-    request.HTTPBody = [NSJSONSerialization dataWithJSONObject: body options: 0 error: &jsonError];
+    request.HTTPBody = [NSJSONSerialization dataWithJSONObject: payload options: 0 error: &jsonError];
     request.HTTPMethod = @"POST";
-
-    return [self enqueueRequest: request modelClass: [STKRepository class] fetchAllPages: YES];
+    
+    if (jsonError) {
+        return nil;
+    }
+    
+    return request;
 }
 
 @end
