@@ -1,16 +1,18 @@
 PODS:
   - Expecta (0.3.1)
-  - Mantle (1.4.1):
+  - Mantle (1.5.1):
     - Mantle/extobjc
-  - Mantle/extobjc (1.4.1)
+  - Mantle/extobjc (1.5.1)
   - OCMock (2.2.4)
-  - OHHTTPStubs (3.1.4)
-  - ReactiveCocoa (2.3):
+  - OHHTTPStubs (3.1.6):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/Core (3.1.6)
+  - ReactiveCocoa (2.3.1):
     - ReactiveCocoa/UI
-  - ReactiveCocoa/Core (2.3):
+  - ReactiveCocoa/Core (2.3.1):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.3)
-  - ReactiveCocoa/UI (2.3):
+  - ReactiveCocoa/no-arc (2.3.1)
+  - ReactiveCocoa/UI (2.3.1):
     - ReactiveCocoa/Core
   - Specta (0.2.1)
 
@@ -24,10 +26,10 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
-  Mantle: 1ca9c0fa84d3d3fc98524e7229f30489b6dd44e5
+  Mantle: d7c5ac734579ec751c58fecbf56189853056c58c
   OCMock: 6db79185520e24f9f299548f2b8b07e41d881bd5
-  OHHTTPStubs: 398901e787d9b62ce539a8a3df0b81431a98236a
-  ReactiveCocoa: 2066583826c17dde8e90c41e489f682048cc57c9
+  OHHTTPStubs: 6781373b69e0a67b27239799f11764d0fbefac55
+  ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
 
 COCOAPODS: 0.33.1
