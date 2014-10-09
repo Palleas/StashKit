@@ -15,6 +15,7 @@
 		62BD749318EB83C5007DC404 /* STKClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 62BD749218EB83C5007DC404 /* STKClientTests.m */; };
 		62E1EF4218E38AAB00C04027 /* STKRepository.h in Headers */ = {isa = PBXBuildFile; fileRef = 62E1EF4018E38AAB00C04027 /* STKRepository.h */; };
 		62E1EF4318E38AAB00C04027 /* STKRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 62E1EF4118E38AAB00C04027 /* STKRepository.m */; };
+		62ED443C19E7469A00958FC5 /* STKClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 62ED443B19E7469A00958FC5 /* STKClientSpec.m */; };
 		7A26918B18DCC1C6006A63B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26918A18DCC1C6006A63B8 /* Cocoa.framework */; };
 		7A26919C18DCC1C6006A63B8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26919B18DCC1C6006A63B8 /* XCTest.framework */; };
 		7A26919D18DCC1C6006A63B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26918A18DCC1C6006A63B8 /* Cocoa.framework */; };
@@ -43,6 +44,7 @@
 		62BD749218EB83C5007DC404 /* STKClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKClientTests.m; sourceTree = "<group>"; };
 		62E1EF4018E38AAB00C04027 /* STKRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKRepository.h; sourceTree = "<group>"; };
 		62E1EF4118E38AAB00C04027 /* STKRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKRepository.m; sourceTree = "<group>"; };
+		62ED443B19E7469A00958FC5 /* STKClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKClientSpec.m; sourceTree = "<group>"; };
 		7A26918718DCC1C6006A63B8 /* libStashKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libStashKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A26918A18DCC1C6006A63B8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7A26918D18DCC1C6006A63B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -156,6 +158,7 @@
 				62AE838318E510040003F813 /* STKRepositoryTests.m */,
 				7A2691A218DCC1C6006A63B8 /* Supporting Files */,
 				62BD749218EB83C5007DC404 /* STKClientTests.m */,
+				62ED443B19E7469A00958FC5 /* STKClientSpec.m */,
 			);
 			path = StashKitTests;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62ED443C19E7469A00958FC5 /* STKClientSpec.m in Sources */,
 				62AE838418E510040003F813 /* STKRepositoryTests.m in Sources */,
 				62BD749318EB83C5007DC404 /* STKClientTests.m in Sources */,
 			);
