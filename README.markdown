@@ -10,7 +10,9 @@ The easiest way is probably to use cocoapods.
 
 ```objectivec
 NSURL *endpoint = [NSURL URLWithString: @"http://stash.oa"];
-STKClient *client = [[STKClient alloc] initWithUsername: @"hal.jordan" password: @"b3w4r3" baseUrl: endpoint];
+STKClient *client = [[STKClient alloc] initWithUsername: @"hal.jordan" 
+											   password: @"b3w4r3" 
+											    baseUrl: endpoint];
 ```
 
 ## Supported methods
