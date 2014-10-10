@@ -69,8 +69,11 @@ NSString * const STKClientErrorDomain = @"STKClientErrorDomain";
 
             // This is a paged API
             RACSignal *nextPageSignal = [RACSignal empty];
+            NSLog(@"payload = %@", payload);
             if (fetchAll && payload[@"values"] && ![payload[@"isLastPage"] boolValue]) {
                 NSURLRequest *nextPageRequest = [self createNextPageRequest: request nextStart: payload[@"nextPageStart"]];
+                NSLog(@"Fetching next page %@", nextPageRequest);
+
                 nextPageSignal = [self enqueueRequest: nextPageRequest fetchAllPages: fetchAll];
             }
 

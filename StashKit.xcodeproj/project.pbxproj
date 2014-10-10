@@ -17,6 +17,7 @@
 		62E1EF4318E38AAB00C04027 /* STKRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 62E1EF4118E38AAB00C04027 /* STKRepository.m */; };
 		62ED443C19E7469A00958FC5 /* STKClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 62ED443B19E7469A00958FC5 /* STKClientSpec.m */; };
 		62ED443F19E88BE600958FC5 /* projects.json in Resources */ = {isa = PBXBuildFile; fileRef = 62ED443E19E88BE600958FC5 /* projects.json */; };
+		62ED444119E8971700958FC5 /* projects-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 62ED444019E8971700958FC5 /* projects-2.json */; };
 		7A26918B18DCC1C6006A63B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26918A18DCC1C6006A63B8 /* Cocoa.framework */; };
 		7A26919C18DCC1C6006A63B8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26919B18DCC1C6006A63B8 /* XCTest.framework */; };
 		7A26919D18DCC1C6006A63B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26918A18DCC1C6006A63B8 /* Cocoa.framework */; };
@@ -47,6 +48,7 @@
 		62E1EF4118E38AAB00C04027 /* STKRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKRepository.m; sourceTree = "<group>"; };
 		62ED443B19E7469A00958FC5 /* STKClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKClientSpec.m; sourceTree = "<group>"; };
 		62ED443E19E88BE600958FC5 /* projects.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = projects.json; sourceTree = "<group>"; };
+		62ED444019E8971700958FC5 /* projects-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "projects-2.json"; sourceTree = "<group>"; };
 		7A26918718DCC1C6006A63B8 /* libStashKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libStashKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A26918A18DCC1C6006A63B8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7A26918D18DCC1C6006A63B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -91,6 +93,7 @@
 		62ED443D19E88BE600958FC5 /* responses */ = {
 			isa = PBXGroup;
 			children = (
+				62ED444019E8971700958FC5 /* projects-2.json */,
 				62ED443E19E88BE600958FC5 /* projects.json */,
 			);
 			path = responses;
@@ -273,6 +276,7 @@
 			files = (
 				7A2691A618DCC1C6006A63B8 /* InfoPlist.strings in Resources */,
 				62ED443F19E88BE600958FC5 /* projects.json in Resources */,
+				62ED444119E8971700958FC5 /* projects-2.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

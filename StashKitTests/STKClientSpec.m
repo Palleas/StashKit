@@ -23,9 +23,7 @@ describe(@"Authenticated", ^{
     beforeEach(^{
         client = [[STKClient alloc] initWithUsername: @"hal.hordan" password: @"b3w4r3" baseUrl: [NSURL URLWithString:@"http://stash"]];
         expect(client).notTo.beNil();
-    });
-    
-    it(@"should fetch the first batch of projects", ^{
+
         [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
             return request.URL.query == nil;
         } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
@@ -35,7 +33,22 @@ describe(@"Authenticated", ^{
                                                        headers: @{@"Content-Type" : @"application/json"}];
         }];
         
-        NSArray *projects = [[[client fetchProjects: YES] collect] asynchronousFirstOrDefault: nil success: &success error: &error];
+        [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+            return [request.URL.query isEqualToString: @"start=5"];
+        } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
+            NSString *string = [[NSBundle bundleForClass: self.class] pathForResource: @"projects-2" ofType: @"json"];
+            return [OHHTTPStubsResponse responseWithFileAtPath: string
+                                                    statusCode: 200
+                                                       headers: @{@"Content-Type" : @"application/json"}];
+        }];
+    });
+    
+    afterEach(^{
+        [OHHTTPStubs removeAllStubs];
+    });
+    
+    it(@"should fetch the first batch of projects", ^{
+        NSArray *projects = [[[client fetchProjects: NO] collect] asynchronousFirstOrDefault: nil success: &success error: &error];
         expect(success).to.beTruthy();
         expect(error).to.beNil();
         expect(projects).to.beKindOf(NSArray.class);
@@ -43,7 +56,11 @@ describe(@"Authenticated", ^{
     });
     
     it(@"should fetch all the available projects", ^{
-    
+        NSArray *projects = [[[client fetchProjects: YES] collect] asynchronousFirstOrDefault: nil success: &success error: &error];
+        expect(success).to.beTruthy();
+        expect(error).to.beNil();
+        expect(projects).to.beKindOf(NSArray.class);
+        expect(projects).to.haveCountOf(6);
     });
     
     it(@"should create a project", ^{
