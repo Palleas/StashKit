@@ -26,6 +26,7 @@ typedef NS_ENUM(NSUInteger, STKClientErrorCode) {
 //
 // Returns a signal which sends zero or more STKProject objects.
 - (RACSignal *)fetchProjects;
+- (RACSignal *)fetchProjects:(BOOL)fetchAllPages;
 
 // Create a project with a given name, key, description and avatar
 //

@@ -138,11 +138,14 @@ NSString * const STKClientErrorDomain = @"STKClientErrorDomain";
     return nextPageRequest;
 }
 
-
 - (RACSignal *)fetchProjects {
+    return [self fetchProjects: YES];
+}
+
+- (RACSignal *)fetchProjects:(BOOL)fetchAllPages {
     NSURL *url = [[self.baseUrl URLByAppendingPathComponent: STKClientAPIEndPoint] URLByAppendingPathComponent: @"projects"];
 
-    return [self enqueueRequest: [NSURLRequest requestWithURL: url] modelClass: [STKProject class] fetchAllPages: YES];
+    return [self enqueueRequest: [NSURLRequest requestWithURL: url] modelClass: [STKProject class] fetchAllPages: fetchAllPages];
 }
 
 - (RACSignal *)createProject:(NSString *)name key:(NSString *)key description:(NSString *)description avatar:(NSData *)avatar {
