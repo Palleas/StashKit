@@ -52,6 +52,12 @@ NSString * const STKClientErrorDomain = @"STKClientErrorDomain";
     return self;
 }
 
+- (RACSignal *)fetchProperties {
+    NSURL *url = [[self.baseUrl URLByAppendingPathComponent: STKClientAPIEndPoint] URLByAppendingPathComponent: @"application-properties"];
+
+    return [self enqueueRequest: [NSURLRequest requestWithURL: url] fetchAllPages: YES];
+}
+
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request fetchAllPages:(BOOL)fetchAll {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSURLSessionDataTask *task = [self.session dataTaskWithRequest: request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {

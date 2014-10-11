@@ -22,6 +22,9 @@ typedef NS_ENUM(NSUInteger, STKClientErrorCode) {
 
 - (instancetype)initWithUsername:(NSString *)name password:(NSString *)password baseUrl:(NSURL *)url;
 
+// Fetch informations about the installation
+- (RACSignal *)fetchProperties;
+
 // Fetch the projects the authenticated user has access to
 //
 // Returns a signal which sends zero or more STKProject objects.
