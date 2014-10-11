@@ -18,7 +18,8 @@
     return @{@"key" : @"key",
              @"name" : @"name",
              @"identifier" : @"id",
-             @"URL" : @"url"
+             @"URL" : @"url",
+             @"projectDescription" : @"description"
              };
 }
 

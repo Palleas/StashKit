@@ -13,6 +13,7 @@
 
 @property (copy) NSString *key;
 @property (copy) NSString *name;
+@property (copy) NSString *projectDescription;
 @property (strong) NSURL *URL;
 @property (strong) NSNumber *identifier;
 

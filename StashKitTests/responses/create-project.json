@@ -1,0 +1,15 @@
+{
+    "key": "COP",
+    "id": 1,
+    "name": "Cool project",
+    "description": "My cool project description",
+    "public": true,
+    "type": "NORMAL",
+    "link": {
+        "url": "http://stash/project",
+        "rel": "self"
+    },
+    "links": {
+        "self": [{"href": "http://link/to/project"}]
+    }
+}

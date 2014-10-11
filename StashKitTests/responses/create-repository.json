@@ -1,0 +1,52 @@
+{
+    "slug": "my-repo",
+    "id": 1,
+    "name": "My repo",
+    "scmId": "git",
+    "state": "AVAILABLE",
+    "statusMessage": "Available",
+    "forkable": true,
+    "project": {
+        "key": "COP",
+        "id": 1,
+        "name": "My Cool Project",
+        "description": "The description for my cool project.",
+        "public": true,
+        "type": "NORMAL",
+        "link": {
+            "url": "http://stash/to/project",
+            "rel": "self"
+        },
+        "links": {
+            "self": [
+                     {
+                     "href": "http://stash/to/project"
+                     }
+                     ]
+        }
+    },
+    "public": true,
+    "cloneUrl": "https://stash/scm/PRJ/my-repo.git",
+    "link": {
+        "url": "http://stash/to/repository",
+        "rel": "self"
+    },
+    "links": {
+        "clone": [
+                  {
+                  "href": "https://stash/scm/PRJ/my-repo.git",
+                  "name": "http"
+                  },
+                  {
+                  "href": "ssh://git@stash/PRJ/my-repo.git",
+                  "name": "ssh"
+                  }
+                  ],
+        "self": [
+                 {
+                 "url": "http://stash/to/repository",
+                 "rel": "self"
+                 }
+                 ]
+    }
+}

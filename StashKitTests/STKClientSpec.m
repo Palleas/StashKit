@@ -25,7 +25,8 @@ describe(@"Authenticated", ^{
         expect(client).notTo.beNil();
 
         [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-            return request.URL.query == nil;
+            NSString *lastpart = [[request.URL.path componentsSeparatedByString: @"/"] lastObject];
+            return [lastpart isEqualToString: @"projects"] && [request.HTTPMethod isEqualToString: @"GET"];
         } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
             NSString *string = [[NSBundle bundleForClass: self.class] pathForResource: @"projects" ofType: @"json"];
             return [OHHTTPStubsResponse responseWithFileAtPath: string
@@ -41,6 +42,27 @@ describe(@"Authenticated", ^{
                                                     statusCode: 200
                                                        headers: @{@"Content-Type" : @"application/json"}];
         }];
+        
+        [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+            NSString *lastpart = [[request.URL.path componentsSeparatedByString: @"/"] lastObject];
+            return [request.HTTPMethod isEqualToString: @"POST"] && [lastpart isEqualToString: @"projects"];
+        } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
+            NSString *string = [[NSBundle bundleForClass: self.class] pathForResource: @"create-project" ofType: @"json"];
+            return [OHHTTPStubsResponse responseWithFileAtPath: string
+                                                    statusCode: 200
+                                                       headers: @{@"Content-Type" : @"application/json"}];
+        }];
+        
+        [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+            return [request.HTTPMethod isEqualToString: @"POST"]
+                && [request.URL.path rangeOfString: @"projects/COP/repos"].location != NSNotFound;
+        } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
+            NSString *string = [[NSBundle bundleForClass: self.class] pathForResource: @"create-repository" ofType: @"json"];
+            return [OHHTTPStubsResponse responseWithFileAtPath: string
+                                                    statusCode: 200
+                                                       headers: @{@"Content-Type" : @"application/json"}];
+        }];
+
     });
     
     afterEach(^{
@@ -64,11 +86,25 @@ describe(@"Authenticated", ^{
     });
     
     it(@"should create a project", ^{
-    
+        RACSignal *createSignal = [client createProject: @"Cool project" key: @"COP" description: @"My cool project description" avatar: nil];
+        STKProject *project = [createSignal asynchronousFirstOrDefault: nil success: &success error: &error];
+        expect(success).to.beTruthy();
+        expect(error).to.beNil();
+        expect(project).to.beKindOf(STKProject.class);
+        expect(project).notTo.beNil();
+        expect(project.name).to.equal(@"Cool project");
+        expect(project.key).to.equal(@"COP");
+        expect(project.projectDescription).to.equal(@"My cool project description");
     });
 
     it(@"should create a repository for a given project", ^{
-        
+        RACSignal *createSignal = [client createRepository: @"My repo" projectKey: @"COP" forkable: YES];
+        STKRepository *repository = [createSignal asynchronousFirstOrDefault: nil success: &success error: &error];
+        expect(success).to.beTruthy();
+        expect(error).to.beNil();
+        expect(repository).to.beKindOf(STKRepository.class);
+        expect(repository).notTo.beNil();
+        expect(repository.name).to.equal(@"My repo");
     });
 });
 
