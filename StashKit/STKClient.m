@@ -14,6 +14,7 @@ NSString * const STKClientErrorDomain = @"STKClientErrorDomain";
 #import "STKClient.h"
 #import "STKProject.h"
 #import "STKRepository.h"
+#import "STKUser.h"
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Mantle/Mantle.h>
@@ -178,6 +179,18 @@ NSString * const STKClientErrorDomain = @"STKClientErrorDomain";
                                                method: @"POST"
                                               payload: body];
     return [self enqueueRequest: request modelClass: [STKRepository class] fetchAllPages: YES];
+}
+
+- (RACSignal *)fetchCurrentUser {
+    return [self fetchUser: self.username];
+}
+
+- (RACSignal *)fetchUser:(NSString *)slug {
+    NSURL *base = [self.baseUrl URLByAppendingPathComponent: STKClientAPIEndPoint];
+    
+    NSURL *url = [base URLByAppendingPathComponent: [NSString stringWithFormat: @"users/%@", slug]];
+
+    return [self enqueueRequest: [NSURLRequest requestWithURL: url] modelClass: STKUser.class fetchAllPages: NO];
 }
 
 - (NSURLRequest *)requestWithEndpoint:(NSString *)endpoint method:(NSString *)method payload:(id)payload {

@@ -41,6 +41,9 @@ typedef NS_ENUM(NSUInteger, STKClientErrorCode) {
 // Returns a signal which sends zero or more STKProject objects.
 - (RACSignal *)createRepository:(NSString *)name projectKey:(NSString *)key forkable:(BOOL)forkable;
 
+- (RACSignal *)fetchUser:(NSString *)slug;
+- (RACSignal *)fetchCurrentUser;
+
 // Returns URL request for next batch of results
 - (NSURLRequest *)createNextPageRequest:(NSURLRequest *)request nextStart:(NSNumber *)nextStart;
 

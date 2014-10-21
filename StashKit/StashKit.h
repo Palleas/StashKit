@@ -9,3 +9,4 @@
 #import "STKClient.h"
 #import "STKProject.h"
 #import "STKRepository.h"
+#import "STKUser.h"
